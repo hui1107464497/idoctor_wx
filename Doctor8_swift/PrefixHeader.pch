@@ -1,0 +1,25 @@
+//
+//  PrefixHeader.pch
+//  Doctor8_swift
+//
+//  Created by ihaoyisheng on 2017/5/15.
+//  Copyright © 2017年 Rabbij. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#pragma mark - RGB颜色转换（16进制->10进制）
+
+//#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0f \
+//green:((float)((rgbValue & 0xFF00) >> 8))/255.0f blue:((float)(rgbValue & 0xFF))/255.0f \
+//alpha:1.0f]
+///**
+// *  设置RGB颜色
+// */
+//#define  IDRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#endif /* PrefixHeader_pch */
