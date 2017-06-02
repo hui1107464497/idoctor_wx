@@ -21,42 +21,46 @@ class MHService: AFHTTPSessionManager {
         let url = NSURL(string:IDTestUrl)
         let config = URLSessionConfiguration.default
         
-        let currentVersion = Bundle.main.infoDictionary?["CFBundleVersion"]
-        config.httpAdditionalHeaders = ["token":token,"platform":"IOS","Version": currentVersion!]
+        let currentVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        config.httpAdditionalHeaders = ["token":token,"platform":"IOS","Version": currentVersion]
         
         let tool = MHService(baseURL: url! as URL, sessionConfiguration: config)
         
         tool.requestSerializer = AFJSONRequestSerializer()
         //tool.requestSerializer.timeoutInterval = 25
-        tool.responseSerializer.acceptableContentTypes?.insert("text/plain")
-        tool.responseSerializer.acceptableContentTypes?.insert("application/json")
-        tool.responseSerializer.acceptableContentTypes?.insert("text/json")
-        tool.responseSerializer.acceptableContentTypes?.insert("text/javascript")
-        tool.responseSerializer.acceptableContentTypes?.insert("text/html")
+        tool.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        tool.responseSerializer.acceptableContentTypes = NSSet(objects: ["text/plain","application/json","text/json","text/javascript","text/html"]) as? Set<String>
+    
         return tool
     }
     
     //@escaping  逃逸闭包，函数执行完毕后才调用的闭包   ，@noescaping在函数内执行的闭包
-    func request(method:HTTPMethod = .POST,url:String,params: AnyObject? ,completion: @escaping (_ dic:NSDictionary?,_ error:Error?) ->()) {
+    func request(method:HTTPMethod = .POST,url:String,params: [String:String]? ,completion: @escaping (_ dic:[String:AnyObject]?,_ code:String,_ message:String) ->()) {
         
         let successBlock = {(task:URLSessionDataTask,result:Any?) ->() in
+          
+            let info = result as? [String : AnyObject]
             
-            if let info = result as? [String : AnyObject] {
+            if  (info != nil) {
                 
-               if info["code"] as! String == "200"{
-                    completion(info as NSDictionary,nil)
+               if info!["code"] as! String == "200"{
+                    completion(info! ,"200",info!["message"] as! String)
                }else{
-                  completion(nil,NSError(domain: "noData", code: info["code"] as! Int, userInfo: ["error":info["message"] as! String]))
                 
+                completion(nil,info!["code"] as! String,info!["message"] as! String)
+                  
                 }
             }else{
-                completion(nil, NSError(domain: "dataerror", code: -10001, userInfo: ["error":"数据不合法"]))
+               
+                completion(nil, "-1000" ,"没有东西耶")
+
             }
         }
         
         let failureBlock = {(task:URLSessionDataTask?,error:Error) -> () in
             SVProgressHUD.showError(withStatus: "网络好像出问题了，请稍后再试")
-            completion(nil,error)
+            completion(nil,"-1001","请求失败")
 
         }
         
@@ -89,7 +93,6 @@ class MHService: AFHTTPSessionManager {
         }
         
         let failureBlock = {(task:URLSessionDataTask?,error:Error) -> () in
-            SVProgressHUD.showError(withStatus: "网络好像出问题了，请稍后再试")
             completion(nil,error)
             
         }

@@ -21,8 +21,14 @@
 		7F43FB8B1EC95308003BC57D /* BookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F43FB8A1EC95308003BC57D /* BookVC.swift */; };
 		7F43FB8D1EC9532A003BC57D /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F43FB8C1EC9532A003BC57D /* MeViewController.swift */; };
 		7F43FB901EC959BA003BC57D /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F43FB8F1EC959BA003BC57D /* Common.swift */; };
+		7F4E1BF21EDFECFB00DF3B4B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E1BF11EDFECFB00DF3B4B /* UIView+Extension.swift */; };
+		7F4E1BF51EDFF26000DF3B4B /* HeaderSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E1BF41EDFF26000DF3B4B /* HeaderSectionView.swift */; };
+		7F4E1BF71EE008D900DF3B4B /* FuncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4E1BF61EE008D900DF3B4B /* FuncButton.swift */; };
 		7FA4BF941ED68212002590D3 /* RequestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BF931ED68212002590D3 /* RequestAPI.swift */; };
 		7FA4BF961ED6870F002590D3 /* MHService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4BF951ED6870F002590D3 /* MHService.swift */; };
+		7FDA450A1EDEB6FF000B80F3 /* IDMHFollowUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA45091EDEB6FF000B80F3 /* IDMHFollowUpModel.swift */; };
+		7FDA450E1EDEB9CE000B80F3 /* IDActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA450D1EDEB9CE000B80F3 /* IDActivityModel.swift */; };
+		7FDA45101EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA450F1EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,8 +69,14 @@
 		7F43FB8A1EC95308003BC57D /* BookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookVC.swift; sourceTree = "<group>"; };
 		7F43FB8C1EC9532A003BC57D /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		7F43FB8F1EC959BA003BC57D /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		7F4E1BF11EDFECFB00DF3B4B /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		7F4E1BF41EDFF26000DF3B4B /* HeaderSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderSectionView.swift; sourceTree = "<group>"; };
+		7F4E1BF61EE008D900DF3B4B /* FuncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncButton.swift; sourceTree = "<group>"; };
 		7FA4BF931ED68212002590D3 /* RequestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestAPI.swift; sourceTree = "<group>"; };
 		7FA4BF951ED6870F002590D3 /* MHService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MHService.swift; sourceTree = "<group>"; };
+		7FDA45091EDEB6FF000B80F3 /* IDMHFollowUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDMHFollowUpModel.swift; sourceTree = "<group>"; };
+		7FDA450D1EDEB9CE000B80F3 /* IDActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDActivityModel.swift; sourceTree = "<group>"; };
+		7FDA450F1EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDSpecialtyCircleDetailCell.swift; sourceTree = "<group>"; };
 		A45F01E46FF17518E672C890 /* Pods-Doctor8_swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doctor8_swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doctor8_swift/Pods-Doctor8_swift.release.xcconfig"; sourceTree = "<group>"; };
 		FC4F0514D5AF6354140E2CB8 /* Pods_Doctor8_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doctor8_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -161,6 +173,7 @@
 		7F43FB741EC947AC003BC57D /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				7FDA450B1EDEB9A2000B80F3 /* doctorCircle */,
 				7F43FB751EC947AC003BC57D /* Book */,
 				7F43FB791EC947AC003BC57D /* Index */,
 				7F43FB7D1EC947AC003BC57D /* Me */,
@@ -204,9 +217,9 @@
 		7F43FB791EC947AC003BC57D /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				7F4E1BF31EDFF24200DF3B4B /* View */,
+				7FDA45081EDEB6F2000B80F3 /* Model */,
 				7F43FB7A1EC947AC003BC57D /* Controller */,
-				7F43FB7B1EC947AC003BC57D /* Model */,
-				7F43FB7C1EC947AC003BC57D /* View */,
 			);
 			path = Index;
 			sourceTree = "<group>";
@@ -217,20 +230,6 @@
 				7F43FB821EC948AB003BC57D /* IndexVC.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		7F43FB7B1EC947AC003BC57D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		7F43FB7C1EC947AC003BC57D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		7F43FB7D1EC947AC003BC57D /* Me */ = {
@@ -268,12 +267,55 @@
 		7F43FB811EC947AC003BC57D /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				7F4E1BF11EDFECFB00DF3B4B /* UIView+Extension.swift */,
 				7F43FB841EC948E9003BC57D /* BaseTabBarVC.swift */,
 				7F43FB861EC94915003BC57D /* BaseNavigationVC.swift */,
 				7F43FB881EC951D1003BC57D /* BaseViewController.swift */,
 				7FA4BF951ED6870F002590D3 /* MHService.swift */,
 			);
 			path = Public;
+			sourceTree = "<group>";
+		};
+		7F4E1BF31EDFF24200DF3B4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7F4E1BF41EDFF26000DF3B4B /* HeaderSectionView.swift */,
+				7F4E1BF61EE008D900DF3B4B /* FuncButton.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		7FDA45081EDEB6F2000B80F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA45091EDEB6FF000B80F3 /* IDMHFollowUpModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7FDA450B1EDEB9A2000B80F3 /* doctorCircle */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA45111EDEC27C000B80F3 /* View */,
+				7FDA450C1EDEB9BE000B80F3 /* Model */,
+			);
+			name = doctorCircle;
+			sourceTree = "<group>";
+		};
+		7FDA450C1EDEB9BE000B80F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA450D1EDEB9CE000B80F3 /* IDActivityModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7FDA45111EDEC27C000B80F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7FDA450F1EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		B83532AD7AC5DADC348A9E1B /* Pods */ = {
@@ -473,10 +515,16 @@
 			files = (
 				7F43FB871EC94915003BC57D /* BaseNavigationVC.swift in Sources */,
 				7F43FB831EC948AB003BC57D /* IndexVC.swift in Sources */,
+				7FDA45101EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift in Sources */,
+				7F4E1BF71EE008D900DF3B4B /* FuncButton.swift in Sources */,
 				7FA4BF961ED6870F002590D3 /* MHService.swift in Sources */,
 				7F43FB8D1EC9532A003BC57D /* MeViewController.swift in Sources */,
 				7F43FB851EC948E9003BC57D /* BaseTabBarVC.swift in Sources */,
 				7F43FB901EC959BA003BC57D /* Common.swift in Sources */,
+				7FDA450A1EDEB6FF000B80F3 /* IDMHFollowUpModel.swift in Sources */,
+				7F4E1BF21EDFECFB00DF3B4B /* UIView+Extension.swift in Sources */,
+				7F4E1BF51EDFF26000DF3B4B /* HeaderSectionView.swift in Sources */,
+				7FDA450E1EDEB9CE000B80F3 /* IDActivityModel.swift in Sources */,
 				7F43FB471EC94654003BC57D /* AppDelegate.swift in Sources */,
 				7F43FB891EC951D1003BC57D /* BaseViewController.swift in Sources */,
 				7FA4BF941ED68212002590D3 /* RequestAPI.swift in Sources */,
@@ -636,7 +684,7 @@
 				DEVELOPMENT_TEAM = MUV8P2KZ9D;
 				GCC_PREFIX_HEADER = /Users/rabbij/Desktop/Doctor8_swift/Doctor8_swift/PrefixHeader.pch;
 				INFOPLIST_FILE = Doctor8_swift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "G.Doctor8-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -652,7 +700,7 @@
 				DEVELOPMENT_TEAM = MUV8P2KZ9D;
 				GCC_PREFIX_HEADER = /Users/rabbij/Desktop/Doctor8_swift/Doctor8_swift/PrefixHeader.pch;
 				INFOPLIST_FILE = Doctor8_swift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "G.Doctor8-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
