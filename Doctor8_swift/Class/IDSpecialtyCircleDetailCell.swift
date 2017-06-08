@@ -55,6 +55,7 @@ class IDActivityCell: UITableViewCell {
     
     private func setUpUI(){
         self.backgroundColor = UIColorFromRGB(rgbValue: 0xf0f1f5);
+        self.selectionStyle = .none
     
         self.noDataView = UIView(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 118))
         self.noDataView.backgroundColor = UIColor.white

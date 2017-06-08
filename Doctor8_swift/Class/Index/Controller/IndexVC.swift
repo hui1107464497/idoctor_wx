@@ -14,7 +14,7 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.automaticallyAdjustsScrollViewInsets = false
         self.view .addSubview(self.tableView)
         self.setTableHeader()
         self.loadBinner()
@@ -37,6 +37,7 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
         
         if indexPath.section == 2 {
             let cell = IDActivityCell().activityCellWithTableView(tableView: tableView)
+            cell.isFromHome = true
             if self.activityDatas.count == 0 {
                 cell.model = nil
             }else{
@@ -47,15 +48,33 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
            let cell =  UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "funcCell")
             cell .addSubview(self.setFuncView())
             return cell
+        }else{
+            let model:IDMHFollowUpModel = self.scheduleDatas[indexPath.row] as! IDMHFollowUpModel
+            if model.state == "待随访" {
+                let cell = IDWaitDosuifangCell().waitSuifangCellWithTableView(tableView:tableView)
+                cell.model = model
+                return cell
+            }else{
+                let  cell = IDWaitDoReferralOrAcceptCell().cellWithTableView(tableView:tableView)
+                cell.model = model
+                return cell
+            }
         }
-        return UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "dd")
 
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return 180
         }
-        return 60
+        else if indexPath.section == 1 {
+            return 60
+        }
+        else{
+            if self.activityDatas.count == 0 {
+                return 118
+            }
+            return 210
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -65,7 +84,7 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
         if section == 1 {
             let header = HeaderSectionView(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 44))
             header.titleLab.text = "今日日程"
-            header.imageView.image = UIImage(named: "home_richeng")
+            header.imageView.image = UIImage(named: "richeng")
             if (self.scheduleDatas.count == 0){
                 header.subTitleLab.text =  "无今日事项"
             }else{
@@ -75,14 +94,14 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
         } else if(section == 2){
             let header = HeaderSectionView(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 44))
             header.titleLab.text = "专科活动"
-            header.imageView.image = UIImage(named: "home_activity")
+            header.imageView.image = UIImage(named: "zkq_activity")
             return header
         }
         return nil
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 || section == 2 {
-            return 44
+            return 44 + 10
         }
         return 0
     }
@@ -154,7 +173,7 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
     }
     private func setTableHeader() {
         
-    self.tableView.tableHeaderView = self.sdScrollview
+        self.tableView.tableHeaderView = self.sdScrollview
         
     }
     
@@ -182,7 +201,8 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
             
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             btn.tag = 1000 + i
-            btn.addTarget(self, action: Selector(("didFuncOnClick:")), for: .touchUpInside)
+            //btn.addTarget(self, action: Selector(("didFuncOnClick:")), for: .touchUpInside)
+           btn.addTarget(self, action: #selector(didFuncOnClick(btn:)), for: .touchUpInside)
             lay .addSubview(btn)
             
         }
@@ -190,13 +210,14 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
         return lay
     }
     
-    @objc private func didFuncOnClick(btn: UIButton){
+     @objc private func didFuncOnClick(btn: FuncButton){
     
     }
     
     //Mark: 懒加载
     private lazy var tableView: UITableView={
-        var tableview = UITableView(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight))
+        var tableview = UITableView(frame: CGRect.init(x: 0, y: 64, width: kScreenWidth, height: kScreenHeight - 64-49))
+        tableview.backgroundColor = UIColorFromRGB(rgbValue: 0xf0f1f5)
         tableview.dataSource = self
         tableview.delegate = self
         tableview.separatorStyle = UITableViewCellSeparatorStyle.none

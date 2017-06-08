@@ -35,21 +35,35 @@ class HeaderSectionView: UIView {
         let imageV = UIImageView(frame: CGRect.init(x: 17, y: 14, width: 15, height: 17))
         return imageV
     }()
+    lazy var split:UIView = {
+        let split = UIView(frame: CGRect.init(x: 0, y: 43.5, width: kScreenWidth, height: 0.5))
+        split.backgroundColor = UIColorFromRGB(rgbValue: 0xdddddd)
+        return split
+    }()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setUI()
+    }
     
-    func setUI()  {
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+   private func setUI()  {
         self.backgroundColor = UIColorFromRGB(rgbValue:  0xf0f1f5);
-        let layView = UIView(frame:CGRect.init(x: 0, y: 10, width: kScreenWidth, height: 44+10))
+        let layView = UIView(frame:CGRect.init(x: 0, y: 10, width: kScreenWidth, height: 44))
         layView.backgroundColor = UIColor.white
         self.addSubview(layView);
         
         let more = UIImageView(frame:CGRect.init(x: kScreenWidth-15-7, y: 18, width: 7, height: 12))
-        more.image = UIImage(named: self.imageName!)
+        //more.image = UIImage(named: (self.imageName?)!)
         layView.addSubview(more)
         
         layView.addSubview(self.imageView)
         layView.addSubview(self.titleLab)
         layView.addSubview(self.subTitleLab)
+        layView.addSubview(self.split)
     }
     
 }
