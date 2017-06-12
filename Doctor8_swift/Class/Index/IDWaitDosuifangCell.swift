@@ -42,9 +42,10 @@ class IDWaitDosuifangCell: UITableViewCell {
     
     var model:IDMHFollowUpModel? {
         didSet{
-            self.headIcon.setImageWith(NSURL.init(string: (model?.patientPhoto)!)! as URL, placeholderImage: UIImage.init(named: "默认头像"))
+            self.headIcon.setImageWith(NSURL.init(string: (DugImageUrl + (model?.patientPhoto)!))! as URL, placeholderImage: UIImage.init(named: "默认头像"))
             self.titleLab.text = model?.patientName;
             self.tipLab.text = model?.state;
+            
 
         }
     }

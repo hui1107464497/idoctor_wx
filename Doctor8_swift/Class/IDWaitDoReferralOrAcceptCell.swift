@@ -37,6 +37,7 @@ class IDWaitDoReferralOrAcceptCell: UITableViewCell {
         disease.font = UIFont.systemFont(ofSize: 10)
         disease.layer.cornerRadius = 2
         disease.layer.masksToBounds = true
+        disease.layer.borderColor = IDRGBColor(r: 0, g: 207, b: 165).cgColor
         return disease
     }()
     lazy var tipLab:UILabel = {
@@ -56,11 +57,11 @@ class IDWaitDoReferralOrAcceptCell: UITableViewCell {
     
     var model:IDMHFollowUpModel?{
         didSet{
-            self.headIcon.setImageWith(URL.init(string: (model?.patientPhoto)!)!, placeholderImage: UIImage.init(named: "默认头像"))
+            self.headIcon.setImageWith(URL.init(string: (DugImageUrl + (model?.patientPhoto)!))!, placeholderImage: UIImage.init(named: "默认头像"))
             self.titleLab.text = model?.patientName;
-            self.sexIcon.image = model?.sex == "男" ? UIImage.init(named: "man-1") :  UIImage.init(named:"woman-1")
+            self.sexIcon.image = model?.sex == "男" ? UIImage.init(named:"man") :  UIImage.init(named:"women")
                 
-            self.ageLab.text = String(describing: model?.patientAge) + "岁" ;
+            self.ageLab.text = ("\(model?.patientAge ?? 0)"+"岁") ;
             self.tipLab.text = model?.state;
             if (model?.state == "待随访接") {
                 self.tipLab.text = "待确认";
@@ -109,9 +110,9 @@ class IDWaitDoReferralOrAcceptCell: UITableViewCell {
         self.titleLab.y = 15;
         self.titleLab.sizeToFit()
         
-        self.sexIcon.frame = CGRect.init(x: self.titleLab.frame.maxX + 9, y: self.titleLab.frame.maxY + 3, width: 15, height: 15)
+        self.sexIcon.frame = CGRect.init(x: self.titleLab.frame.maxX + 9, y: self.titleLab.y + 3, width: 15, height: 15)
         
-        self.ageLab.frame = CGRect.init(x: self.sexIcon.frame.maxX + 5, y: self.titleLab.frame.maxY + 3, width: 10, height: 10)
+        self.ageLab.frame = CGRect.init(x: self.sexIcon.frame.maxX + 5, y: self.titleLab.y + 3, width: 10, height: 10)
         self.ageLab.sizeToFit()
         
         self.diseaseLab.frame = CGRect.init(x: self.titleLab.x, y: self.titleLab.frame.maxY + 8, width: 10, height: 10)

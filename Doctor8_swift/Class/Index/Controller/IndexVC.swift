@@ -211,7 +211,10 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
     }
     
      @objc private func didFuncOnClick(btn: FuncButton){
-    
+        if btn.tag == 1003 {
+            let vc = IDSignList()
+            self.navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     //Mark: 懒加载

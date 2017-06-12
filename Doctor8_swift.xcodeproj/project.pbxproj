@@ -31,6 +31,9 @@
 		7FDA450A1EDEB6FF000B80F3 /* IDMHFollowUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA45091EDEB6FF000B80F3 /* IDMHFollowUpModel.swift */; };
 		7FDA450E1EDEB9CE000B80F3 /* IDActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA450D1EDEB9CE000B80F3 /* IDActivityModel.swift */; };
 		7FDA45101EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDA450F1EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift */; };
+		7FDD1FDD1EE8F5F000E484BD /* MHTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD1FDC1EE8F5F000E484BD /* MHTabView.swift */; };
+		7FDD1FE01EE9265000E484BD /* IDSignList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD1FDF1EE9265000E484BD /* IDSignList.swift */; };
+		7FDD1FE21EE9399700E484BD /* IDSignContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDD1FE11EE9399700E484BD /* IDSignContentVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		7FDA45091EDEB6FF000B80F3 /* IDMHFollowUpModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDMHFollowUpModel.swift; sourceTree = "<group>"; };
 		7FDA450D1EDEB9CE000B80F3 /* IDActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDActivityModel.swift; sourceTree = "<group>"; };
 		7FDA450F1EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDSpecialtyCircleDetailCell.swift; sourceTree = "<group>"; };
+		7FDD1FDC1EE8F5F000E484BD /* MHTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MHTabView.swift; sourceTree = "<group>"; };
+		7FDD1FDF1EE9265000E484BD /* IDSignList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDSignList.swift; sourceTree = "<group>"; };
+		7FDD1FE11EE9399700E484BD /* IDSignContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDSignContentVC.swift; sourceTree = "<group>"; };
 		A45F01E46FF17518E672C890 /* Pods-Doctor8_swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doctor8_swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doctor8_swift/Pods-Doctor8_swift.release.xcconfig"; sourceTree = "<group>"; };
 		FC4F0514D5AF6354140E2CB8 /* Pods_Doctor8_swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doctor8_swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -278,6 +284,7 @@
 				7F43FB861EC94915003BC57D /* BaseNavigationVC.swift */,
 				7F43FB881EC951D1003BC57D /* BaseViewController.swift */,
 				7FA4BF951ED6870F002590D3 /* MHService.swift */,
+				7FDD1FDC1EE8F5F000E484BD /* MHTabView.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -295,6 +302,7 @@
 		7F4E1BF81EE4F74E00DF3B4B /* sign */ = {
 			isa = PBXGroup;
 			children = (
+				7FDD1FDE1EE9263000E484BD /* Controller */,
 				7F4E1BF91EE4F75B00DF3B4B /* View */,
 			);
 			name = sign;
@@ -354,6 +362,15 @@
 				7FDA450F1EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		7FDD1FDE1EE9263000E484BD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7FDD1FDF1EE9265000E484BD /* IDSignList.swift */,
+				7FDD1FE11EE9399700E484BD /* IDSignContentVC.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		B83532AD7AC5DADC348A9E1B /* Pods */ = {
@@ -553,8 +570,10 @@
 			files = (
 				7F43FB871EC94915003BC57D /* BaseNavigationVC.swift in Sources */,
 				7F43FB831EC948AB003BC57D /* IndexVC.swift in Sources */,
+				7FDD1FDD1EE8F5F000E484BD /* MHTabView.swift in Sources */,
 				7FDA45101EDEC274000B80F3 /* IDSpecialtyCircleDetailCell.swift in Sources */,
 				7F4E1BFB1EE4F77D00DF3B4B /* IDWaitDosuifangCell.swift in Sources */,
+				7FDD1FE01EE9265000E484BD /* IDSignList.swift in Sources */,
 				7F4E1BFF1EE504EE00DF3B4B /* IDWaitDoReferralOrAcceptCell.swift in Sources */,
 				7F4E1BF71EE008D900DF3B4B /* FuncButton.swift in Sources */,
 				7FA4BF961ED6870F002590D3 /* MHService.swift in Sources */,
@@ -567,6 +586,7 @@
 				7FDA450E1EDEB9CE000B80F3 /* IDActivityModel.swift in Sources */,
 				7F43FB471EC94654003BC57D /* AppDelegate.swift in Sources */,
 				7F43FB891EC951D1003BC57D /* BaseViewController.swift in Sources */,
+				7FDD1FE21EE9399700E484BD /* IDSignContentVC.swift in Sources */,
 				7FA4BF941ED68212002590D3 /* RequestAPI.swift in Sources */,
 				7F43FB8B1EC95308003BC57D /* BookVC.swift in Sources */,
 			);
