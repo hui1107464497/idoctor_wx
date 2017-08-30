@@ -117,7 +117,7 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
             if (code == "200"){
                 print(dict!)
                 let data:NSArray = dict!["data"] as! NSArray
-                self.scrollviewImages = ["默认轮播图"]
+//                self.scrollviewImages = ["默认轮播图"]
                 for v in data {
                     let binner = v as! [String:AnyObject]
                 self.scrollviewImages!.append(binner["app_img"]! as! String)
@@ -134,19 +134,22 @@ class IndexVC: BaseViewController,UITableViewDelegate,UITableViewDataSource,SDCy
     
     private func loadRicheng(){
         let param:[String:String] = ["doctorId":doctorId]
-        MHService.sharedService().request(url: getRichengUrl, params: param) { (dict:[String:AnyObject]?, code:String,message:String) in
-            if (code == "200"){
-                print(dict!)
-                let data:NSArray = dict!["data"] as! NSArray
-
-                for v in data {
-                    let model : IDMHFollowUpModel = IDMHFollowUpModel.init(dict: v as! [String : AnyObject])
-                    self.scheduleDatas .add(model)
-                }
-                self.tableView.reloadData()
-                //scheduleDatas
-            }
+        MHService.sharedService().request(url: getRichengUrl, params: param) { (res:[String:AnyObject]?, code:String, message:String) in
+            
         }
+//        MHService.sharedService().request(url: getRichengUrl, params: param) { (dict:[String:AnyObject]?, code:String,message:String) in
+//            if (code == "200"){
+//                print(dict!)
+//                let data:NSArray = dict!["data"] as! NSArray
+//
+//                for v in data {
+//                    let model : IDMHFollowUpModel = IDMHFollowUpModel.init(dict: v as! [String : AnyObject])
+//                    self.scheduleDatas .add(model)
+//                }
+//                self.tableView.reloadData()
+//                //scheduleDatas
+//            }
+//        }
     }
     private func loadActivity(){
         let param = ["userId":userId,"id":doctorId]

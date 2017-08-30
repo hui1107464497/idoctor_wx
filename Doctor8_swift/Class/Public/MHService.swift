@@ -26,17 +26,21 @@ class MHService: AFHTTPSessionManager {
         
         let tool = MHService(baseURL: url! as URL, sessionConfiguration: config)
         
-        tool.requestSerializer = AFJSONRequestSerializer()
+        tool.requestSerializer = AFHTTPRequestSerializer()
+        
         //tool.requestSerializer.timeoutInterval = 25
         tool.requestSerializer.setValue("application/json", forHTTPHeaderField: "Accept")
-        
+        tool.responseSerializer = AFHTTPResponseSerializer()
         tool.responseSerializer.acceptableContentTypes = NSSet(objects: ["text/plain","application/json","text/json","text/javascript","text/html"]) as? Set<String>
-    
+        
+        let securityPolicy:AFSecurityPolicy = AFSecurityPolicy()
+        securityPolicy.allowInvalidCertificates = true
+        tool.securityPolicy = securityPolicy
         return tool
     }
     
     //@escaping  逃逸闭包，函数执行完毕后才调用的闭包   ，@noescaping在函数内执行的闭包
-    func request(method:HTTPMethod = .POST,url:String,params: [String:String]? ,completion: @escaping (_ dic:[String:AnyObject]?,_ code:String,_ message:String) ->()) {
+    func request(method:HTTPMethod = .POST,url:String,params: [String:Any]? ,completion: @escaping (_ dic:[String:AnyObject]?,_ code:String,_ message:String) ->()) {
         
         let successBlock = {(task:URLSessionDataTask,result:Any?) ->() in
           
@@ -60,6 +64,7 @@ class MHService: AFHTTPSessionManager {
         
         let failureBlock = {(task:URLSessionDataTask?,error:Error) -> () in
             SVProgressHUD.showError(withStatus: "网络好像出问题了，请稍后再试")
+            print(error.localizedDescription)
             completion(nil,"-1001","请求失败")
 
         }
@@ -103,7 +108,7 @@ class MHService: AFHTTPSessionManager {
                 let img = imageArr[i]
                 let eachImgData = UIImageJPEGRepresentation(img, 0.9)
                 //                let eachImgData = UIImagePNGRepresentation(img)
-                formData.appendPart(withForm: eachImgData!, name: "myfile")
+                formData.appendPart(withForm: eachImgData!, name: "myfile")//名字从前面传过来
             }
         },progress: nil, success: successBlock, failure: failureBlock)
         

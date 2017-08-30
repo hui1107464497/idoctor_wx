@@ -13,11 +13,13 @@ class IDSignList: UIViewController {
     var tabView:MHTabView?
     override func viewDidLoad() {
         super.viewDidLoad()
+        //第一次加载的时候headscrollview里面的内容不显示，滚动一下就显示了。。。
+        self.automaticallyAdjustsScrollViewInsets = false
         self.title = "签约"
-        let titleArr:NSArray = ["待处理","已生效","已过期"]
-
-        tabView = MHTabView.init(frame: CGRect.init(x: 0, y: 64, width: kScreenWidth, height: self.view.height), titleArr: titleArr )
-        for i in 0 ..< titleArr.count {
+        let titles:NSArray = ["待处理","已生效","已过期"]
+       self.tabView = MHTabView.init(frame: CGRect.init(x: 0, y: 64, width: kScreenWidth, height: self.view.height), titleArr: titles, childVCStr: "IDSignContentVC")
+        
+        for i in 0 ..< titles.count {
             let newsVC = IDSignContentVC()
             switch (i) {
             case 0:
@@ -36,6 +38,13 @@ class IDSignList: UIViewController {
             newsVC.view.backgroundColor = UIColorFromRGB(rgbValue: 0xf0f1f5);
             self.addChildViewController(newsVC)
         }
+        tabView?.addChildBlock = {(index:Int) in
+            let newsVC :IDSignContentVC = self.childViewControllers[index] as! IDSignContentVC
+            newsVC.view.frame = (self.tabView?.contentScrollview.bounds)!;
+            self.tabView?.contentScrollview.addSubview(newsVC.view)
+            newsVC.tableview.mj_header .beginRefreshing()
+
+        };
         
         // 添加默认控制器
         let vc:IDSignContentVC = self.childViewControllers.first as! IDSignContentVC
@@ -45,9 +54,9 @@ class IDSignList: UIViewController {
         self.tabView?.contentScrollview.addSubview(vc.view)
         view.addSubview((tabView)!)
         
-    
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
